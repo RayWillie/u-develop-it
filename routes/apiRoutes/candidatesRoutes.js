@@ -12,16 +12,16 @@ router.get('/candidates', (req, res) => {
     ON candidates.party_id = parties.id`;
 
     db.query(sql, (err, rows) => {
-    if (err){
-        res.status(500).json({ error: err.message });
-        return;
-    }
-    res.json({
-        message: 'success',
-        data: rows
+        if (err){
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: 'success',
+            data: rows
+        });
     });
-});
-});
+    });
 
 // GET a single candidate
 router.get('/candidate/:id', (req, res) => {
